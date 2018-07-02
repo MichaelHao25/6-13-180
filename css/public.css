@@ -1,0 +1,261 @@
+@import "reset.css";
+/*引入css文件的一种方式*/
+/*
+
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#99ffffff,endColorstr=#99ffffff)";
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff,endColorstr=#99ffffff);
+background:rgba(255,255,255,.8);
+
+
+ filter:alpha(opacity=40); 针对 IE8 以及更早的版本 */
+body {
+  font-size: 16Px;
+  background: #efeff4;
+}
+.connection .pic {
+  padding: 1.2rem 0 0.2rem;
+}
+.connection .pic img {
+  display: block;
+  width: 2.5rem;
+  margin: 0 auto;
+}
+.connection .name {
+  font-size: 0.36rem;
+  color: #655e5e;
+  line-height: 1;
+  text-align: center;
+}
+.connection a {
+  display: block;
+  margin: 1.05rem auto 0;
+  text-align: center;
+  width: 5.9rem;
+  height: 0.8rem;
+  font-size: 0.36rem;
+  color: #fff;
+  line-height: 0.8rem;
+  background: #1aad19;
+  border-radius: 0.05rem;
+}
+.chat {
+  padding-top: 0.15rem;
+}
+.chat .row {
+  padding: 0.15rem 0.15rem 0;
+  display: none;
+}
+.chat .row.active {
+  display: flex;
+}
+.chat .row .pic {
+  flex: 0 0 0.66rem;
+}
+.chat .row .pic img {
+  display: block;
+  width: 100%;
+}
+.chat .row .content {
+  margin-left: 0.2rem;
+  flex: 0 0 auto;
+  max-width: 4.12rem;
+}
+.chat .row .content.w412 {
+  width: 4.12rem;
+}
+.chat .row .content:after {
+  content: '';
+  position: absolute;
+  top: 0.2rem;
+  left: -0.26rem;
+  border: 0.13rem solid transparent;
+  border-top-width: 0.1rem;
+  border-bottom-width: 0.1rem;
+  border-right-color: #fff;
+}
+.chat .row .content {
+  position: relative;
+}
+.chat .row .content:after {
+  content: '';
+  position: absolute;
+  top: 0.2rem;
+  left: -0.26rem;
+  border: 0.13rem solid transparent;
+  border-top-width: 0.1rem;
+  border-bottom-width: 0.1rem;
+  border-right-color: #fff;
+}
+.chat .row .text,
+.chat .row .sound,
+.chat .row .add {
+  padding: 0.15rem 0.18rem;
+  background: #fff;
+  border-radius: 0.06rem;
+  min-height: 0.36rem;
+  line-height: 0.36rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-size: 0.24rem;
+  color: #040404;
+}
+.chat .row .text img {
+  height: 0.46rem;
+}
+.chat .row .emoji {
+  display: block;
+}
+.chat .row .emoji img {
+  height: 0.3rem;
+  vertical-align: middle;
+  margin-top: -0.02rem;
+}
+.chat .row a {
+  color: #6985c0;
+  text-decoration: underline;
+}
+.chat .row .add {
+  margin-top: 0.1rem;
+  display: none;
+}
+.chat .row .add .icon {
+  margin-top: 0.1rem;
+  padding-left: 0.35rem;
+  font-size: 0.2rem;
+  color: #c8c8c8;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABsCAYAAACcsRc5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QkZCMDNENEM2RURCMTFFODg4RDBFMUYzNjBDMjBGMDIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QkZCMDNENEI2RURCMTFFODg4RDBFMUYzNjBDMjBGMDIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSI2NjMyOTAwQTE3NUY3ODVEMjI2RDkzRDlDRkNCMUVBQiIgc3RSZWY6ZG9jdW1lbnRJRD0iNjYzMjkwMEExNzVGNzg1RDIyNkQ5M0Q5Q0ZDQjFFQUIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5D1Xy4AAAKCUlEQVR42uydfWhdZx3Hz22bNn1J0qZtkiZN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) -0.05rem center/0.3rem auto no-repeat;
+}
+.chat .row .sound {
+  width: 2.3rem;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+.chat .row .sound.active .bar-2,
+.chat .row .sound.active .bar-1 {
+  opacity: 0;
+}
+.chat .row .sound.active .bar-3 {
+  opacity: 1;
+}
+.chat .row .sound.active .bar-2 {
+  -webkit-animation: one-bar 1500ms linear infinite;
+          animation: one-bar 1500ms linear infinite;
+}
+.chat .row .sound.active .bar-1 {
+  -webkit-animation: two-bar 1500ms linear infinite;
+          animation: two-bar 1500ms linear infinite;
+}
+.chat .row .sound .bar {
+  width: 0.18rem;
+}
+.chat .row .sound .bar-1,
+.chat .row .sound .bar-2,
+.chat .row .sound .bar-3 {
+  opacity: 0;
+  fill: #9e9e9e;
+}
+.chat .row .length {
+  font-size: 0.19rem;
+  color: #a1a0a0;
+  text-align: center;
+}
+.chat .row .audio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chat .row .audio-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 0.66rem;
+  text-align: center;
+  font-size: 0.24rem;
+  color: #fff;
+  background: #a9abaa;
+  text-align: center;
+  border-radius: 0.05rem;
+  text-decoration: none;
+}
+.dotting {
+  display: inline-block;
+  min-width: 0.04rem;
+  min-height: 0.04rem;
+  border-radius: 50%;
+  box-shadow: 0.04rem 0 currentColor, 0.12rem 0 currentColor, 0.2rem 0 currentColor; /* for IE9+, ..., 3个点 */
+  -webkit-animation: dot 4s infinite step-start both;
+          animation: dot 4s infinite step-start both; /* for IE10+, ... */
+}
+.dotting:before {
+  content: '...';
+}
+/* for IE8. 若无需兼容IE8, 此行以及下一行删除*/
+.dotting::before {
+  content: '';
+}
+/* for IE9+ 覆盖 IE8 */
+:root .dotting {
+  margin-right: 0.08rem;
+}
+/* for IE9+,FF,CH,OP,SF 占据空间*/
+@-webkit-keyframes dot {
+  25% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0.04rem 0 currentColor;
+  }
+  75% {
+    box-shadow: 0.04rem 0 currentColor, 0.12rem 0 currentColor;
+/* 2个点 */
+  }
+}
+@keyframes dot {
+  25% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0.04rem 0 currentColor;
+  }
+  75% {
+    box-shadow: 0.04rem 0 currentColor, 0.12rem 0 currentColor;
+/* 2个点 */
+  }
+}
+@-webkit-keyframes one-bar {
+  0%, 33% {
+    opacity: 0;
+  }
+  100%, 34% {
+    opacity: 1;
+  }
+}
+@keyframes one-bar {
+  0%, 33% {
+    opacity: 0;
+  }
+  100%, 34% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes two-bar {
+  0%, 66% {
+    opacity: 0;
+  }
+  100%, 67% {
+    opacity: 1;
+  }
+}
+@keyframes two-bar {
+  0%, 66% {
+    opacity: 0;
+  }
+  100%, 67% {
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=public.css.map */
